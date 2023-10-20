@@ -5,3 +5,4 @@ tokens_file
 mytwitterbot/db.sqlite3
 media/
 __pycache__
+mytwitterbot/.env
