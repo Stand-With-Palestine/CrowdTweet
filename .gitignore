@@ -1,0 +1,7 @@
+.vscode
+venv/*
+venv/
+tokens_file
+mytwitterbot/db.sqlite3
+media/
+__pycache__
