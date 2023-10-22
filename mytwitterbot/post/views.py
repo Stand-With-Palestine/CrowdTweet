@@ -17,7 +17,7 @@ from django.shortcuts import (
 )
 
 from .twitter_auth import (
-    # auth,
+    auth,
     get_client
 )
 from .utils import (
