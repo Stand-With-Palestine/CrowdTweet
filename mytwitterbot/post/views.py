@@ -79,7 +79,7 @@ class PostToTwitter(LoginRequiredMixin, FormView):
 
 
 class TwitterLogin(RedirectView):
-    def get_redirect_url(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         # Get the Twitter OAuth URL and redirect the user to Twitter for authentication
         try:
             redirect_url = auth.get_authorization_url()
@@ -90,13 +90,20 @@ class TwitterLogin(RedirectView):
 
 
 class TwitterCallbackView(RedirectView):
+
     def get_redirect_url(self, *args, **kwargs):
+        return redirect('post:post_to_twitter')
+
+    def get(self, request, *args, **kwargs):
+        url = self.get_redirect_url()
+
         # After the user grants access to your app, this view handles the callback
         verifier = request.GET.get('oauth_verifier')
+
         # access_token = request.session['request_token']
         access_secret = auth.get_access_token(verifier)
 
         # Save the user's access_token and access_secret to a file or database
         save_tokens_to_file(access_secret)
 
-        return reverse_lazy('post:post_to_twitter')
+        return url
