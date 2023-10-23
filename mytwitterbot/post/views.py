@@ -79,12 +79,15 @@ class PostToTwitter(LoginRequiredMixin, FormView):
 
 
 class TwitterLogin(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        return auth.get_authorization_url()
+
     def get(self, request, *args, **kwargs):
+        url = self.get_redirect_url()
         # Get the Twitter OAuth URL and redirect the user to Twitter for authentication
         try:
-            redirect_url = auth.get_authorization_url()
             request.session['request_token'] = auth.request_token
-            return redirect(redirect_url)
+            return redirect(url)
         except tweepy.errors.TweepyException as e:
             return HttpResponse("Error: %s" % e)
 
