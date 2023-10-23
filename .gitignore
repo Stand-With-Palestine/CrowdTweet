@@ -6,3 +6,4 @@ apps/db.sqlite3
 media/
 __pycache__
 apps/.env
+*.sql
