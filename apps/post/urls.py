@@ -2,7 +2,7 @@ from django.urls import path
 from django.urls.resolvers import URLPattern
 from . import views
 
-app_name = 'post'
+app_name = 'apps.post'
 
 urlpatterns = [
     path('', views.WelcomePageView.as_view(), name='welcome_page'),

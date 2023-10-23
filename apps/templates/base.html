@@ -1,0 +1,42 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{#{% bootstrap_javascript %}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stand With Palestine</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'css/header.css' %}" rel="stylesheet">
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="container m-5">
+    <header class="row">
+        {% include 'header.html' %}
+    </header>
+    <div class="mt-5">
+        {% block welcome_page %}
+
+        {% endblock %}
+    </div>
+    <div class="row">
+        {% block login_page %}
+
+        {% endblock %}
+    </div>
+    {% if user.is_authenticated %}
+        <div class="row align-items-center ">
+            {% block post_to_twitter %}
+
+            {% endblock %}
+        </div>
+    {% endif %}
+    <div class="row align-items-center">
+        {% include 'footer.html' %}
+    </div>
+</div>
+</body>
+</html>
