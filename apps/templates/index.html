@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block welcome_page %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">
+                حياكم الله جميعاً هُنا حملة إعلامية على تويتر ضد الإعلام الغربي لكشف تزييفه للحقائق.
+                مادة النشر ستكون بلغات أجنبية، مطلوب منكم تسجيل حسابكم معنا لنقوم بالتغريد نيابة عنكم
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <a href="{% url 'post:twitter_login' %}" class="btn btn-primary row col-md-4 align-self-center">قــــاوم</a>
+        <div class="col-md-4"></div>
+    </div>
+{% endblock %}

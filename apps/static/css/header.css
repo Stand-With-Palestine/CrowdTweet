@@ -1,0 +1,20 @@
+nav.nav {
+    text-align: right;
+}
+
+nav.nav a {
+    color: #333; /* Change link color */
+    margin-left: 20px;
+}
+
+/* Style the "Menu" button in the header */
+.btn.btn-primary[data-bs-toggle="collapse"] {
+    background-color: #007bff; /* Change button color */
+    border-color: #007bff;
+}
+
+/* Add padding to the "Menu" button */
+.btn.btn-primary[data-bs-toggle="collapse"] {
+    padding: 10px 20px;
+    font-size: 1rem;
+}

@@ -1,0 +1,23 @@
+.row:nth-child(2) {
+    align-items: center;
+}
+
+/* Style the Arabic text in the content */
+h1.text-right {
+    text-align: right;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Style the "قــــاوم" button in the content */
+.btn-primary.float-right {
+    background-color: #007bff; /* Change button color */
+    border-color: #007bff;
+    padding: 10px 20px; /* Add padding to the button */
+    font-size: 1rem;
+}
+
+/* Center the "قــــاوم" button horizontally in its column */
+.col-md-6 .btn-primary.float-right {
+    margin: 0 auto;
+}

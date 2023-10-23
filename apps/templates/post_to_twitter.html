@@ -1,0 +1,62 @@
+{#{% load crispy_forms_tags %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{##}
+{#<head>#}
+{#    <style>#}
+{#        /* styles.css */#}
+{##}
+{#        .my-form {#}
+{#            max-width: 400px;#}
+{#            margin: 0 auto;#}
+{#            padding: 20px;#}
+{#            background-color: #f5f5f5;#}
+{#            border: 1px solid #ccc;#}
+{#            border-radius: 5px;#}
+{#        }#}
+{##}
+{#        .form-group {#}
+{#            margin-bottom: 20px;#}
+{#        }#}
+{##}
+{#        .form-control {#}
+{#            width: 100%;#}
+{#            /* padding: 10px; */#}
+{#            border: 1px solid #ccc;#}
+{#            border-radius: 5px;#}
+{#            outline: none;#}
+{#        }#}
+{##}
+{#        .form-control-file {#}
+{#            width: 100%;#}
+{#            /* padding: 10px; */#}
+{#            border: 1px solid #ccc;#}
+{#            border-radius: 5px;#}
+{#            outline: none;#}
+{#        }#}
+{##}
+{#        .btn {#}
+{#            background-color: #007BFF;#}
+{#            color: #fff;#}
+{#            padding: 10px 20px;#}
+{#            border: none;#}
+{#            border-radius: 5px;#}
+{#            cursor: pointer;#}
+{#        }#}
+{##}
+{#        .btn:hover {#}
+{#            background-color: #0056b3;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#    <form method="post" action="{% url 'post:post_to_twitter' %}" enctype="multipart/form-data" class="my-form">#}
+{#        {% csrf_token %}#}
+{#        {{ form|crispy }}#}
+{#        <button type="submit" class="btn">Submit</button>#}
+{#    </form>#}
+{#</body>#}
+{##}
+{#</html>#}

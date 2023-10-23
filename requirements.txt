@@ -30,3 +30,4 @@ typing_extensions==4.8.0
 urllib3==2.0.6
 django_crispy_forms==2.1
 crispy-bootstrap5==0.7
+django-bootstrap-v5==1.0.11

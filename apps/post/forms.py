@@ -1,4 +1,5 @@
 from django import forms
+from crispy_forms.helper import FormHelper
 
 
 class PostToTwitterForm(forms.Form):
@@ -17,3 +18,7 @@ class PostToTwitterForm(forms.Form):
             }
         )
     )
+
+    def __init__(self, *args, **kwargs):
+        super(PostToTwitterForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)

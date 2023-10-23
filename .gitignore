@@ -2,7 +2,7 @@
 venv/*
 venv/
 tokens_file
-mytwitterbot/db.sqlite3
+apps/db.sqlite3
 media/
 __pycache__
-mytwitterbot/.env
+apps/.env

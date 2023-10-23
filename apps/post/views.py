@@ -25,13 +25,13 @@ from .utils import (
 
 
 class WelcomePageView(TemplateView):
-    template_name = 'post/index.html'
+    template_name = 'index.html'
 
 
 class PostToTwitter(LoginRequiredMixin, FormView):
     form_class = PostToTwitterForm
     success_url = reverse_lazy('post:post_to_twitter')
-    template_name = 'post/post_to_twitter.html'
+    template_name = 'post_to_twitter.html'
 
     def post(self, request, *args, **kwargs):
         content = request.POST.get('content', '')
@@ -51,7 +51,7 @@ class PostToTwitter(LoginRequiredMixin, FormView):
                     client = get_client(access_token, access_secret)
 
                     # Get the absolute path to the media/OIG.jpeg file
-                    # file_path = os.path.abspath("./mytwitterbot/media/OIG.jpeg")
+                    # file_path = os.path.abspath("./main/media/OIG.jpeg")
                     # Print the file path to check if it's correct
                     # print("File Path:", file_path)
 
