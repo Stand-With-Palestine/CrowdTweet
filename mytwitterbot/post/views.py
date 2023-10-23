@@ -1,23 +1,20 @@
 import tweepy
-from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from .forms import PostToTwitterForm
+from django.conf import settings
 from django.views.generic import (
-    RedirectView,
+    View,
     FormView,
     TemplateView
 )
 from django.http import (
-    HttpResponse,
-    HttpResponseRedirect
+    HttpResponse
 )
 from django.shortcuts import (
-    render,
     redirect
 )
-
 from .twitter_auth import (
-    auth,
     get_client
 )
 from .utils import (
@@ -25,7 +22,6 @@ from .utils import (
     load_tokens_from_file,
     save_tokens_to_file
 )
-from .forms import PostToTwitterForm
 
 
 class WelcomePageView(TemplateView):
@@ -60,8 +56,8 @@ class PostToTwitter(LoginRequiredMixin, FormView):
                     # print("File Path:", file_path)
 
                     # Use API V1 to get media ID
-                    auth.set_access_token(access_token, access_secret)
-                    client_v1 = tweepy.API(auth)
+                    settings.AUTH.set_access_token(access_token, access_secret)
+                    client_v1 = tweepy.API(settings.AUTH)
                     media = client_v1.media_upload(file_path)
                     media_id = media.media_id
 
@@ -78,32 +74,29 @@ class PostToTwitter(LoginRequiredMixin, FormView):
             return "Error posting the tweet."
 
 
-class TwitterLogin(RedirectView):
-    def get(self, request, *args, **kwargs):
-        # Get the Twitter OAuth URL and redirect the user to Twitter for authentication
+class TwitterLogin(View):
+
+    def get(self, request):
+        redirect_url = settings.AUTH.get_authorization_url()
         try:
-            redirect_url = auth.get_authorization_url()
-            request.session['request_token'] = auth.request_token
+            request.session['request_token'] = settings.AUTH.request_token
             return redirect(redirect_url)
         except tweepy.errors.TweepyException as e:
             return HttpResponse("Error: %s" % e)
 
 
-class TwitterCallbackView(RedirectView):
+class TwitterCallbackView(View):
 
-    def get_redirect_url(self, *args, **kwargs):
-        return redirect('post:post_to_twitter')
-
-    def get(self, request, *args, **kwargs):
-        url = self.get_redirect_url()
-
-        # After the user grants access to your app, this view handles the callback
+    def get(self, request):
         verifier = request.GET.get('oauth_verifier')
 
-        # access_token = request.session['request_token']
-        access_secret = auth.get_access_token(verifier)
+        request_token = request.session.get('request_token')
 
-        # Save the user's access_token and access_secret to a file or database
-        save_tokens_to_file(access_secret)
-
-        return url
+        settings.AUTH.request_token = request_token
+        try:
+            access_secret = settings.AUTH.get_access_token(verifier)
+            # Save the user's access_token and access_secret to a file or database
+            save_tokens_to_file(access_secret)
+            return redirect('post:post_to_twitter')
+        except tweepy.errors.TweepyException as e:
+            return HttpResponse("Error: %s" % e)
