@@ -1,0 +1,28 @@
+name: Deploy to EC2 via SSH
+
+on:
+  push:
+    branches:
+      - main  # Change to your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install SSH client
+      run: sudo apt-get install -y openssh-client
+
+    - name: Deploy code via SSH
+      env:
+        PRIVATE_KEY: ${{ secrets.YOUR_PRIVATE_KEY_SECRET }}
+      run: |
+        chmod 600 /tmp/deploy_key
+        echo "$PRIVATE_KEY" > /tmp/deploy_key
+        ssh -i /tmp/deploy_key ec2-user@YOUR_EC2_PUBLIC_IP 'cd /home/ubuntu/TwitterBot && git pull'
+
+    - name: Clean up
+      run: rm /tmp/deploy_key
