@@ -66,6 +66,7 @@ class PostToTwitter(LoginRequiredMixin, FormView):
                         text=content,
                         media_ids=[media_id]
                     )
+                    return redirect('post:welcome_page')
 
         except tweepy.errors.TweepyException as e:
             print(f"Twitter API Error: {e}")
