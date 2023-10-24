@@ -1,7 +1,11 @@
-{#{% extends "base.html" %} #}
-{##}
-{#<!-- {% block content %} -->#}
-{#  <h2>Login with Twitter</h2>#}
-{#  <p>Click the button below to log in with your Twitter account:</p>#}
-{#  <a href="{% url 'twitter_login' %}">Login with Twitter</a>#}
-{#<!-- {% endblock %} -->#}
+{% extends "base.html" %}
+
+{% block login %}
+    <div class="col-md-6">
+        <div class="text-center">
+            <h2>Login with Twitter</h2>
+            <p>Click the button below to log in with your Twitter account:</p>
+            <a href="{% url 'post:twitter_login' %}" class="btn btn-primary">Login with Twitter</a>
+        </div>
+    </div>
+{% endblock %}

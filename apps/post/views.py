@@ -99,6 +99,6 @@ class TwitterCallbackView(View):
             access_secret = settings.AUTH.get_access_token(verifier)
             # Save the user's access_token and access_secret to a file or database
             save_tokens_to_file(access_secret)
-            return redirect('post:post_to_twitter')
+            return redirect('post:welcome_page')
         except tweepy.errors.TweepyException as e:
             return HttpResponse("Error: %s" % e)
