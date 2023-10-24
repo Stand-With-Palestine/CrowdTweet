@@ -20,6 +20,7 @@ jobs:
       env:
         PRIVATE_KEY: ${{ secrets.YOUR_PRIVATE_KEY_SECRET }}
       run: |
+        touch /tmp/deploy_key
         chmod 600 /tmp/deploy_key
         echo "$PRIVATE_KEY" > /tmp/deploy_key
         ssh -i /tmp/deploy_key ec2-user@YOUR_EC2_PUBLIC_IP 'cd /home/ubuntu/TwitterBot && git pull'
