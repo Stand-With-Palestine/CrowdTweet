@@ -34,17 +34,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['3.249.31.235', 'palmycause.info', 'localhost', 'standwithpalestine.info']
 
-# Twitter credentials
-API_KEY = ''
-API_KEY_SECRET = ''
-ACCESS_TOKEN = ''
-ACCESS_TOKEN_SECRET = ''
-
 TWITTER_API_KEY = os.getenv('TWITTER_API_KEY')
 TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY')
 BEARER_TOKEN = os.getenv('BEARER_TOKEN')
 
-AUTH = tweepy.OAuth1UserHandler(TWITTER_API_KEY, TWITTER_API_SECRET_KEY)
+AUTH = tweepy.OAuth1UserHandler(consumer_key=TWITTER_API_KEY, consumer_secret=TWITTER_API_SECRET_KEY)
 
 # Application definition
 
