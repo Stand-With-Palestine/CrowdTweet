@@ -1,7 +1,6 @@
 from django.conf import settings
 import re
 import os
-from django.conf import settings
 
 def handle_uploaded_file(uploaded_file):
     # Define the directory where you want to save the file, relative to your media root.
