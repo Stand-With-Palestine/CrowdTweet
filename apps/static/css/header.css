@@ -1,3 +1,10 @@
+#logo {
+    background: linear-gradient(90deg, #f60202 33.33%, #100404 33.33%, #100404 66.66%, #39af0b 66.66%, #3c652c 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
 nav.nav {
     text-align: right;
 }
