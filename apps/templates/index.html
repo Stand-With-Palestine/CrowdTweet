@@ -1,8 +1,4 @@
 {% extends 'base.html' %}
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
 {% block welcome_page %}
     <div class="row">
         <div class="col-md-12">
@@ -12,9 +8,14 @@
             </h1>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-4"></div>
-        <a href="{% url 'post:twitter_login' %}" class="btn btn-primary row col-md-4 align-self-center">قــــاوم</a>
-        <div class="col-md-4"></div>
+        <div class="col-md-12 text-center">
+            {% if user.is_authenticated %}
+            <a href="{% url 'post:post_to_twitter' %}" class="btn btn-primary">انشر الآن</a>
+            {% else %}
+            <a href="{% url 'post:twitter_login' %}" class="btn btn-primary">سجل الآن</a>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

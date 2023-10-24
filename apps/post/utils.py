@@ -1,3 +1,4 @@
+from django.conf import settings
 import re
 import os
 from django.conf import settings
