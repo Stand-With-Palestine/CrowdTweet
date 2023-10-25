@@ -14,8 +14,9 @@
             {% if user.is_authenticated %}
             <a href="{% url 'post:post_to_twitter' %}" class="btn btn-primary">انشر الآن</a>
             {% else %}
-            <a href="{% url 'post:twitter_login' %}" class="btn btn-primary">سجل الآن</a>
+            <a href="{% url 'post:twitter_login' %}" class="btn btn-primary">قاوم </a>
             {% endif %}
         </div>
     </div>
 {% endblock %}
+{% extends "footer.html" %}
