@@ -30,9 +30,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'apps/templates')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['3.249.31.235', 'palmycause.info', 'localhost', 'standwithpalestine.info','www.standwithpalestine.info']
+ALLOWED_HOSTS = ['3.249.31.235', 'localhost', 'standwithpalestine.info','www.standwithpalestine.info']
 CSRF_TRUSTED_ORIGINS = ['https://standwithpalestine.info']
 TWITTER_API_KEY = os.getenv('TWITTER_API_KEY')
 TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY')
