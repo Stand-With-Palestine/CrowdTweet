@@ -20,16 +20,17 @@
 
         {% endblock %}
     </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        {% block login_page %}
+
+        {% endblock %}
+    </div>
     {% if user.is_authenticated %}
         <div class="row d-flex justify-content-center align-items-center">
             {% block post_to_twitter %}
 
             {% endblock %}
         </div>
-    {% else %}
-        {% block login_page %}
-
-        {% endblock %}
     {% endif %}
     <div class="row align-items-center">
         {% include 'footer.html' %}
