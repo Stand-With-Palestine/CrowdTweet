@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-12 text-center">
-            {% if not user.is_authenticated %}
+            {% if not request.user.is_authenticated %}
                 <a href="{% url 'post:login' %}" class="btn btn-primary">قــاوم </a>
             {% else %}
                 <a href="#" class="btn btn-primary">ســجل حسابك الآن </a>

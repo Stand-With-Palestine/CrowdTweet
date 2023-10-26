@@ -16,25 +16,27 @@
 <div class="container m-5">
     {% include 'header.html' %}
     <div class="mt-5">
-        {% block welcome_page %}
-
-        {% endblock %}
-    </div>
-    <div class="row d-flex justify-content-center align-items-center">
-        {% block login_page %}
-
-        {% endblock %}
-    </div>
-    {% if user.is_authenticated %}
-        <div class="row d-flex justify-content-center align-items-center">
-            {% block post_to_twitter %}
+        {% block content %}
+            {% block welcome_page %}
 
             {% endblock %}
-        </div>
-    {% endif %}
-    <div class="row align-items-center">
-        {% include 'footer.html' %}
-    </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                {% block login_page %}
+
+                {% endblock %}
+            </div>
+            {% if user.is_authenticated %}
+                <div class="row d-flex justify-content-center align-items-center">
+                    {% block post_to_twitter %}
+
+                    {% endblock %}
+                </div>
+            {% endif %}
+            <div class="row align-items-center">
+                {% include 'footer.html' %}
+            </div>
+        {% endblock %}
 </div>
 </body>
 </html>

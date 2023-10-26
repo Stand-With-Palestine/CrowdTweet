@@ -1,34 +1,45 @@
+import logging
+
 import tweepy
 from django.conf import settings
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
-from .twitter_auth import get_client
+from django.contrib.auth import logout
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     UserPassesTestMixin
 )
+from django.contrib.auth.views import LoginView, LogoutView
 from django.http import (
     HttpResponse,
     HttpResponseRedirect
 )
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views.generic import (
-    View,
     FormView,
     TemplateView
 )
-from allauth.account.forms import (
-    SignupForm,
-    LoginForm
-)
 
 from .forms import (
-    PostToTwitterForm
+    PostToTwitterForm, LoginForm
 )
+from .twitter_auth import get_client
 from .utils import (
     handle_uploaded_file,
     load_tokens_from_file,
     save_tokens_to_file
 )
+
+class CustomLoginView(LoginView):
+    form_class = LoginForm
+    template_name = 'account/login.html'
+
+
+class CustomLogoutView(LogoutView):
+    template_name = 'account/logout.html'
+
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('post:login')
 
 
 class WelcomePageView(TemplateView):

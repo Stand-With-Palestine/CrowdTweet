@@ -1,5 +1,6 @@
-from django import forms
 from crispy_forms.helper import FormHelper
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class PostToTwitterForm(forms.Form):
@@ -22,3 +23,21 @@ class PostToTwitterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(PostToTwitterForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
+
+
+class LoginForm(AuthenticationForm):
+    """
+    Operator Login.
+    """
+
+    def __init__(self, *args, **kwargs):
+        """
+        Constructs all the necessary attributes for OperatorLoginFormZ form
+        Args:
+            *args (): Extra list attributes.
+            **kwargs (): Extra dictionary attributes.
+        """
+        super(LoginForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        return super().clean()
