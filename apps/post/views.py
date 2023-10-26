@@ -1,22 +1,28 @@
 import tweepy
 from django.conf import settings
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import (
-    HttpResponse, HttpResponseRedirect
-)
-from django.shortcuts import (
-    redirect
-)
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from .twitter_auth import get_client
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    UserPassesTestMixin
+)
+from django.http import (
+    HttpResponse,
+    HttpResponseRedirect
+)
 from django.views.generic import (
     View,
     FormView,
     TemplateView
 )
+from allauth.account.forms import (
+    SignupForm,
+    LoginForm
+)
 
-from .forms import PostToTwitterForm
-from .twitter_auth import (
-    get_client
+from .forms import (
+    PostToTwitterForm
 )
 from .utils import (
     handle_uploaded_file,
@@ -29,10 +35,23 @@ class WelcomePageView(TemplateView):
     template_name = 'index.html'
 
 
-class PostToTwitter(LoginRequiredMixin, FormView):
+class TwitterLogin(TemplateView):
+    template_name = 'login.html'
+
+
+class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
     form_class = PostToTwitterForm
     success_url = reverse_lazy('post:post_to_twitter')
     template_name = 'post_to_twitter.html'
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def get_login_url(self):
+        if not self.request.user.is_superuser:
+            return super(PostToTwitter, self).get_login_url()
+        else:
+            return redirect('post:login')
 
     def post(self, request, *args, **kwargs):
         content = request.POST.get('content', '')
@@ -76,30 +95,33 @@ class PostToTwitter(LoginRequiredMixin, FormView):
             return "Error posting the tweet."
 
 
-class TwitterLogin(View):
+def twitter_login_sso(request):
+    auth = tweepy.OAuth1UserHandler(
+        settings.TWITTER_API_KEY,
+        settings.TWITTER_API_SECRET_KEY
+    )
+    try:
+        redirect_url = auth.get_authorization_url(signin_with_twitter=True)
+        request.session['request_token'] = auth.request_token
+        return HttpResponseRedirect(redirect_url)
+    except tweepy.errors.TweepyException as e:
+        return HttpResponse("Error: %s" % e)
 
-    def get(self, request):
-        try:
-            auth = tweepy.OAuth1UserHandler(settings.TWITTER_API_KEY, settings.TWITTER_API_SECRET_KEY)
-            redirect_url = auth.get_authorization_url()
-            request.session['request_token'] = auth.request_token
-            return HttpResponseRedirect(redirect_url)
-        except tweepy.errors.TweepyException as e:
-            return HttpResponse("Error: %s" % e)
 
+def twitter_callback_sso(request):
+    auth = tweepy.OAuth1UserHandler(
+        settings.TWITTER_API_KEY,
+        settings.TWITTER_API_SECRET_KEY
+    )
+    verifier = request.GET.get('oauth_verifier')
 
-class TwitterCallbackView(View):
+    request_token = request.session.get('request_token')
 
-    def get(self, request):
-        verifier = request.GET.get('oauth_verifier')
-
-        request_token = request.session.get('request_token')
-
-        settings.AUTH.request_token = request_token
-        try:
-            access_secret = settings.AUTH.get_access_token(verifier)
-            # Save the user's access_token and access_secret to a file or database
-            save_tokens_to_file(access_secret)
-            return redirect('post:welcome_page')
-        except tweepy.errors.TweepyException as e:
-            return HttpResponse("Error: %s" % e)
+    auth.request_token = request_token
+    try:
+        access_secret = auth.get_access_token(verifier)
+        # Save the user's access_token and access_secret to a file or database
+        save_tokens_to_file(access_secret)
+        return redirect('post:welcome_page')
+    except tweepy.errors.TweepyException as e:
+        return HttpResponse("Error: %s" % e)

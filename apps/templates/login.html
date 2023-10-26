@@ -1,11 +1,13 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
 
-{% block login %}
+{% block login_page %}
     <div class="col-md-6">
         <div class="text-center">
-            <h2>Login with Twitter</h2>
-            <p>Click the button below to log in with your Twitter account:</p>
-            <a href="{% url 'post:twitter_login' %}" class="btn btn-primary">Login with Twitter</a>
+            <h2>تسجيل الدخول بحساب تويتر</h2>
+            {% buttons %}
+                <a href="{% url 'post:twitter_login' %}" class="btn btn-primary"> ســجـل الـآن </a>
+            {% endbuttons %}
         </div>
     </div>
 {% endblock %}
