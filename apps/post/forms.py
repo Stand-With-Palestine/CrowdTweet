@@ -18,7 +18,6 @@ class PostToTwitterForm(forms.Form):
         widget=forms.FileInput(
             attrs={
                 'class': 'form-control-file',
-                'label': _('Media File')
             }
         ),
         label=_('Media File')
