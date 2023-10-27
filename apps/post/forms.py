@@ -27,7 +27,6 @@ class PostToTwitterForm(forms.Form):
         super(PostToTwitterForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.fields['media_file'].required = False
-        # self.fields['media_file'].widget.
 
 
 class LoginForm(AuthenticationForm):
