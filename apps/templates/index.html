@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block welcome_page %}
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-center">
-                حياكم الله جميعاً هُنا حملة إعلامية على تويتر ضد الإعلام الغربي لكشف تزييفه للحقائق.
-                مادة النشر ستكون بلغات أجنبية، مطلوب منكم تسجيل حسابكم معنا لنقوم بالتغريد نيابة عنكم
+                {% trans "Welcome, everyone. Here is a Twitter awareness campaign against Western media to expose its distortion of the facts. The content will be in foreign languages. We ask you to register your account with us so that we can tweet on your behalf." %}
             </h1>
         </div>
     </div>
@@ -12,9 +12,7 @@
     <div class="row">
         <div class="col-md-12 text-center">
             {% if not request.user.is_authenticated %}
-                <a href="{% url 'post:login' %}" class="btn btn-primary">قــاوم </a>
-            {% else %}
-                <a href="#" class="btn btn-primary">ســجل حسابك الآن </a>
+                <a href="{% url 'post:login' %}" class="btn btn-primary">{% trans "Resist" %}</a>
             {% endif %}
         </div>
     </div>

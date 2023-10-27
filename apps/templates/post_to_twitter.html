@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load bootstrap5 %}
+{% load i18n %}
 
 {% block post_to_twitter %}
     <div class="col-md-6">
@@ -11,7 +12,7 @@
             </div>
             {% buttons %}
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
                 </div>
             {% endbuttons %}
         </form>

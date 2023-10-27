@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+{% block about_us %}
+    <div class="row mt-5">
+        <div class="col">
+            <h1 class="text-center">
+                {% trans "About Us" %}
+            </h1>
+        </div>
+    </div>
+    <div class="row mt-4 text-center">
+        <div class="col-12">
+            <h2 class="text-center">
+                {% trans "Our project is a support for the original Campaign" %}
+            </h2>
+        </div>
+    </div>
+    <div class="row text-end">
+        <h3>
+            {% trans "What's the Campaign" %}
+        </h3>
+        <h4>
+            {% trans "An awareness campaign aimed at stopping the aggression on Gaza and lifting the blockade through exposing Zionist media manipulation by posting tweets in English on Twitter and revealing the facts to the Western and Arab world about what is happening in Gaza" %}
+        </h4>
+    </div>
+{% endblock %}
