@@ -12,8 +12,8 @@
     <link href="{% static 'css/header.css' %}" rel="stylesheet">
     <link href="{% static 'css/footer.css' %}" rel="stylesheet">
 </head>
-<body>
-<div class="container m-5">
+<body class="min-vh-100">
+<div class="container mt-4">
     {% include 'header.html' %}
     <div class="mt-5">
         {% block content %}
@@ -33,6 +33,10 @@
                     {% endblock %}
                 </div>
             {% endif %}
+            {% block about_us %}
+
+            {% endblock %}
+
             <div class="row align-items-center">
                 {% include 'footer.html' %}
             </div>

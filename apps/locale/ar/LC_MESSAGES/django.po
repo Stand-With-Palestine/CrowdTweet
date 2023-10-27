@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-27 17:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: templates/about_us.html:11 templates/header.html:14 templates/header.html:34
+msgid "About Us"
+msgstr "من نحن"
+
+#: templates/about_us.html:18
+msgid "Our project is a support for the original Campaign"
+msgstr " مشروعنا عبارة عن دعم للحـملة الأصلية"
+
+#: templates/about_us.html:24
+msgid "What's the Campaign"
+msgstr "مـا هي الحـملة"
+
+#: templates/about_us.html:27
+msgid ""
+"An awareness campaign aimed at stopping the aggression on Gaza and lifting "
+"the blockade through exposing Zionist media manipulation by posting tweets "
+"in English on Twitter and revealing the facts to the Western and Arab world "
+"about what is happening in Gaza"
+msgstr ""
+"حملة إعلامية تهدف إلى إيقاف العدوان على غزة، وفك الحصار، من خلال تبين "
+"التزييف الإعلامي الصهيوني وذلك بنشر تغريدات باللغة الإنجليزية على تويتر، "
+"وكشف الحقائق للعالم الغربي والعربي على ما يجري في غزة"
+
+#: templates/account/login.html:5 templates/account/login.html:11
+#: templates/account/login.html:25
+msgid "Sign In"
+msgstr "تـسجيل الدخول"
+
+#: templates/account/login.html:23
+msgid "Forgot Password?"
+msgstr "نـسيت كلمة المرور"
+
+#: templates/footer.html:4
+msgid "Stand With Gaza campaign"
+msgstr "حملة نُـصرة غزه"
+
+#: templates/header.html:9 templates/header.html:29
+msgid "Home"
+msgstr "الصفحه الرئيسية"
+
+#: templates/header.html:11 templates/header.html:31
+msgid "Post Tweet"
+msgstr "انـشر الآن"
+
+#: templates/header.html:16 templates/header.html:36
+msgid "Logout"
+msgstr "تسـجيل الخروج"
+
+#: templates/header.html:18 templates/header.html:38
+msgid "Login"
+msgstr "تسـجيل الدخول"
+
+#: templates/header.html:25
+msgid "Menu"
+msgstr "القـائمة"
+
+#: templates/index.html:7
+msgid ""
+"Welcome, everyone. Here is a Twitter awareness campaign against Western "
+"media to expose its distortion of the facts. The content will be in foreign "
+"languages. We ask you to register your account with us so that we can tweet "
+"on your behalf."
+msgstr ""
+"حياكم الله جميعاً هُنا حملة إعلامية على تويتر ضد الإعلام الغربي لكشف تزييفه "
+"للحقائق.مادة النشر ستكون بلغات أجنبية، مطلوب منكم تسجيل حسابكم معنا لنقوم "
+"بالتغريد نيابة عنكم"
+
+#: templates/index.html:15
+msgid "Resist"
+msgstr "قــاوم"
+
+#: templates/login.html:8
+msgid "sign in with twitter"
+msgstr "تسـجيل الدخول بواسطة تويتر"
+
+#: templates/login.html:10
+msgid "Go To Twitter"
+msgstr "اذهب الى تويتر"
+
+#: templates/post_to_twitter.html:15
+msgid "Submit"
+msgstr "انشر"

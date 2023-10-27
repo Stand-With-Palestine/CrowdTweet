@@ -49,6 +49,10 @@ class TwitterLogin(TemplateView):
     template_name = 'login.html'
 
 
+class AboutUsView(TemplateView):
+    template_name = 'about_us.html'
+
+
 class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
     form_class = PostToTwitterForm
     success_url = reverse_lazy('post:post_to_twitter')
