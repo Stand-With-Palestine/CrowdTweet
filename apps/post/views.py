@@ -1,5 +1,3 @@
-import logging
-
 import tweepy
 from django.conf import settings
 from django.contrib.auth import logout
@@ -13,7 +11,7 @@ from django.http import (
     HttpResponseRedirect
 )
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import (
     FormView,
     TemplateView
@@ -28,6 +26,7 @@ from .utils import (
     load_tokens_from_file,
     save_tokens_to_file
 )
+
 
 class CustomLoginView(LoginView):
     form_class = LoginForm
@@ -72,38 +71,43 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
             # Save the uploaded file to the specified directory.
             file_path = handle_uploaded_file(uploaded_file)
             print("File Path:", file_path)
-        try:
-            if content:
-                print('Content:', content)
-                values = load_tokens_from_file()
-                for value in values:
-                    access_token, access_secret = values[value]
 
-                    client = get_client(access_token, access_secret)
+        results = []
+        if content:
+            print('Content:', content)
+            values = load_tokens_from_file()
+            for value in values:
+                access_token, access_secret = values[value]
 
-                    # Get the absolute path to the media/OIG.jpeg file
-                    # file_path = os.path.abspath("./main/media/OIG.jpeg")
-                    # Print the file path to check if it's correct
-                    # print("File Path:", file_path)
+                client = get_client(access_token, access_secret)
 
+                try:
                     # Use API V1 to get media ID
                     settings.AUTH.set_access_token(access_token, access_secret)
                     client_v1 = tweepy.API(settings.AUTH)
-                    media = client_v1.media_upload(file_path)
-                    media_id = media.media_id
+                    if uploaded_file:
+                        media = client_v1.media_upload(file_path)
+                        media_id = media.media_id
 
-                    client.create_tweet(
-                        text=content,
-                        media_ids=[media_id]
-                    )
-                    return redirect('post:welcome_page')
+                        client.create_tweet(
+                            text=content,
+                            media_ids=[media_id]
+                        )
+                    else:
+                        client.create_tweet(
+                            text=content,
+                        )
+                    results.append(f"Tweet posted successfully for {value}")
 
-        except tweepy.errors.TweepyException as e:
-            print(f"Twitter API Error: {e}")
-            return "Error posting the tweet."
-        except Exception as e:
-            print(f"Error posting the tweet: {e}")
-            return "Error posting the tweet."
+                except tweepy.errors.TweepyException as e:
+                    print(f"Twitter API Error for {value}: {e}")
+                    results.append(f"Error posting the tweet for {value}")
+
+                except Exception as e:
+                    print(f"Error posting the tweet for {value}: {e}")
+                    results.append(f"Error posting the tweet for {value}")
+
+        return HttpResponseRedirect(reverse('post:post_to_twitter'))
 
 
 def twitter_login_sso(request):
