@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-30 12:34+0000\n"
+"POT-Creation-Date: 2023-10-30 13:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,15 +103,19 @@ msgstr "نسعى هنا إلى إشعال شرارة التغيير وكشف ا�
 msgid ""
 "It's a Twitter awareness campaign that springs from the depths of our hearts "
 "to change the narrative and expose deception"
-msgstr " إنها حملة إعلامية على تويتر تنطلق من أعماق القلوب لتغيير الرواية وكشف التضليل"
+msgstr ""
+" إنها حملة إعلامية على تويتر تنطلق من أعماق القلوب لتغيير الرواية وكشف "
+"التضليل"
 
 #: templates/index.html:23
 msgid ""
 "If you're ready to participate in this effort, you have the opportunity now. "
 "Join us by clicking the button below"
-msgstr "إذا كنتم مستعدين للمشاركة في هذا الجهد، فلديكم الفرصة الآن. انضموا إلينا بالنقر على الزر أدناه"
+msgstr ""
+"إذا كنتم مستعدين للمشاركة في هذا الجهد، فلديكم الفرصة الآن. انضموا إلينا "
+"بالنقر على الزر أدناه"
 
-#: templates/index.html:24 templates/index.html:37
+#: templates/index.html:24 templates/index.html:42
 msgid "Resist"
 msgstr "قــاوم"
 
@@ -121,13 +125,22 @@ msgid ""
 "world hear us. Here, you don't just have a chance to participate but a "
 "chance to change the narrative and influence the world with your story. Get "
 "started and be a part of this creative campaign"
-msgstr "وسنقوم بنشر الحقائق بأصواتكم بلغات أجنبية، لنجعل العالم يسمعنا. هنا، ليس لديكم مجرد فرصة للمشاركة بل فرصة لتغيير السرد والتأثير على العالم بقصتكم. انطلقوا وكونوا جزءًا من هذه الحملة الإبداعية"
+msgstr ""
+"وسنقوم بنشر الحقائق بأصواتكم بلغات أجنبية، لنجعل العالم يسمعنا. هنا، ليس "
+"لديكم مجرد فرصة للمشاركة بل فرصة لتغيير السرد والتأثير على العالم بقصتكم. "
+"انطلقوا وكونوا جزءًا من هذه الحملة الإبداعية"
 
-#: templates/index.html:31
+#: templates/index.html:32
 msgid ""
 "This project has been prepared by young Arabs who are passionate about their "
 "cause"
 msgstr "تم تجهيز هذا المشروع من قبل شباب عربي غيور على قضيته"
+
+#: templates/index.html:40
+msgid ""
+"The link to allow the platform to share on your accounts so you can be part "
+"of the resistance with your words"
+msgstr "رابط السماح للمنصة بالمشاركة على حساباتكم لتكونو جزءً من المقاومة بالكلمة"
 
 #: templates/login.html:8
 msgid "sign in with twitter"
