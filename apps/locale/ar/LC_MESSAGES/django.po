@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-27 20:06+0000\n"
+"POT-Creation-Date: 2023-10-30 13:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "Content"
 msgstr "المـحتوى"
 
-#: post/forms.py:21 post/forms.py:24
+#: post/forms.py:24
 msgid "Media File"
 msgstr "اضافة ملف وسائط"
 
-#: templates/about_us.html:11 templates/header.html:14 templates/header.html:34
+#: templates/about_us.html:11 templates/header.html:14 templates/header.html:37
 msgid "About Us"
 msgstr "من نحن"
 
@@ -63,40 +63,84 @@ msgstr "نـسيت كلمة المرور"
 msgid "Stand With Gaza campaign"
 msgstr "حملة نُـصرة غزه"
 
-#: templates/header.html:9 templates/header.html:29
+#: templates/header.html:9 templates/header.html:32
 msgid "Home"
 msgstr "الصفحه الرئيسية"
 
-#: templates/header.html:11 templates/header.html:31
+#: templates/header.html:11 templates/header.html:34
 msgid "Post Tweet"
 msgstr "انـشر الآن"
 
-#: templates/header.html:16 templates/header.html:36
+#: templates/header.html:16 templates/header.html:39
 msgid "Logout"
 msgstr "تسـجيل الخروج"
 
-#: templates/header.html:18 templates/header.html:38
+#: templates/header.html:19 templates/header.html:42
+msgid "remove the account"
+msgstr ""
+
+#: templates/header.html:21 templates/header.html:44
 msgid "Login"
 msgstr "تسـجيل الدخول"
 
-#: templates/header.html:25
+#: templates/header.html:28
 msgid "Menu"
 msgstr "القـائمة"
 
 #: templates/index.html:7
-msgid ""
-"Welcome, everyone. Here is a Twitter awareness campaign against Western "
-"media to expose its distortion of the facts. The content will be in foreign "
-"languages. We ask you to register your account with us so that we can tweet "
-"on your behalf."
-msgstr ""
-"حياكم الله جميعاً هُنا حملة إعلامية على تويتر ضد الإعلام الغربي لكشف تزييفه "
-"للحقائق.مادة النشر ستكون بلغات أجنبية، مطلوب منكم تسجيل حسابكم معنا لنقوم "
-"بالتغريد نيابة عنكم"
+msgid "In support of Palestine"
+msgstr "من أجل فلسطين"
 
-#: templates/index.html:15
+#: templates/index.html:10
+msgid "Resist as much as you can"
+msgstr "قاوم بما تستطيع"
+
+#: templates/index.html:17
+msgid "Here, we aim to ignite the spark of change and uncover hidden truths"
+msgstr "نسعى هنا إلى إشعال شرارة التغيير وكشف الحقائق الخفية"
+
+#: templates/index.html:20
+msgid ""
+"It's a Twitter awareness campaign that springs from the depths of our hearts "
+"to change the narrative and expose deception"
+msgstr ""
+" إنها حملة إعلامية على تويتر تنطلق من أعماق القلوب لتغيير الرواية وكشف "
+"التضليل"
+
+#: templates/index.html:23
+msgid ""
+"If you're ready to participate in this effort, you have the opportunity now. "
+"Join us by clicking the button below"
+msgstr ""
+"إذا كنتم مستعدين للمشاركة في هذا الجهد، فلديكم الفرصة الآن. انضموا إلينا "
+"بالنقر على الزر أدناه"
+
+#: templates/index.html:24 templates/index.html:42
 msgid "Resist"
 msgstr "قــاوم"
+
+#: templates/index.html:25
+msgid ""
+"and we will share the facts in your voices in foreign languages to make the "
+"world hear us. Here, you don't just have a chance to participate but a "
+"chance to change the narrative and influence the world with your story. Get "
+"started and be a part of this creative campaign"
+msgstr ""
+"وسنقوم بنشر الحقائق بأصواتكم بلغات أجنبية، لنجعل العالم يسمعنا. هنا، ليس "
+"لديكم مجرد فرصة للمشاركة بل فرصة لتغيير السرد والتأثير على العالم بقصتكم. "
+"انطلقوا وكونوا جزءًا من هذه الحملة الإبداعية"
+
+#: templates/index.html:32
+msgid ""
+"This project has been prepared by young Arabs who are passionate about their "
+"cause"
+msgstr "تم تجهيز هذا المشروع من قبل شباب عربي غيور على قضيته"
+
+#: templates/index.html:40
+msgid ""
+"The link to allow the platform to share on your accounts so you can be part "
+"of the resistance with your words"
+msgstr "رابط السماح للمنصة بالمشاركة على حساباتكم لتكونو جزءً من المقاومة بالكلمة"
 
 #: templates/login.html:8
 msgid "sign in with twitter"
