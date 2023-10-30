@@ -91,12 +91,14 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                         access_token,
                         access_secret
                     )
-                    client_v1 = tweepy.API(settings.AUTH)
+                    api_v1 = tweepy.API(settings.AUTH)
                     if uploaded_file:
-                        media = client_v1.media_upload(
+                        media = api_v1.media_upload(
                             handle_uploaded_file(
                                 uploaded_file
-                            )
+                            ),
+                            media_category='tweet_video' if str(uploaded_file).endswith('.mp4') else 'tweet_gif'
+                            if str(uploaded_file).endswith('.gif') else 'tweet_image'
                         )
                         media_id = media.media_id
                         client.create_tweet(
@@ -146,6 +148,11 @@ def twitter_callback_sso(request):
             'access_token': access_secret[0],
             'access_secret': access_secret[1]
         }
+        if access_secret[0] == TwitterUsers.objects.values_list(
+                'tokens__access_token',
+                flat=True
+        ).get():
+            return redirect('post:welcome_page')
         users = TwitterUsers(tokens=tokens_dict)
         users.save()
         return redirect('post:welcome_page')
