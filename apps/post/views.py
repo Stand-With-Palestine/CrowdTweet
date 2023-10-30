@@ -164,7 +164,7 @@ def twitter_callback_sso(request):
             if access_secret[0] == TwitterUsers.objects.values_list(
                     'tokens__access_token',
                     flat=True
-            ).get():
+            ).filter().first():
                 return redirect('post:welcome_page')
             users = TwitterUsers(tokens=tokens_dict)
             users.save()
