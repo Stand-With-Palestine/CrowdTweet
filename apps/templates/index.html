@@ -4,15 +4,39 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-center">
-                {% trans "Welcome, everyone. Here is a Twitter awareness campaign against Western media to expose its distortion of the facts. The content will be in foreign languages. We ask you to register your account with us so that we can tweet on your behalf." %}
+                🇵🇸 {% trans "In support of Palestine" %}
+            </h1>
+            <h1 class="text-center">
+                🔥 {% trans "Resist as much as you can" %}
             </h1>
         </div>
     </div>
-
-    <div class="row">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <h3 class="text-center py-3">
+                💪🏼 {% trans "Here, we aim to ignite the spark of change and uncover hidden truths" %}
+            </h3>
+            <h3 class="text-center">
+                {% trans "It's a Twitter awareness campaign that springs from the depths of our hearts to change the narrative and expose deception" %}
+            </h3>
+            <h3 class="text-end py-4">
+                {% trans "If you're ready to participate in this effort, you have the opportunity now. Join us by clicking the button below" %}
+                <span class="text-primary">{% trans "Resist" %}</span>،
+                {% trans "and we will share the facts in your voices in foreign languages to make the world hear us. Here, you don't just have a chance to participate but a chance to change the narrative and influence the world with your story. Get started and be a part of this creative campaign" %}
+            </h3>
+        </div>
+    </div>
+    <div class="row mt-md-5">
+        <div class="col-md-12">
+            <h1 class="text-center">
+                💪🏼 {% trans "This project has been prepared by young Arabs who are passionate about their cause" %}
+            </h1>
+        </div>
+    </div>
+    <div class="row mt-md-3">
         <div class="col-md-12 text-center">
             {% if not request.user.is_authenticated %}
-                <a href="{% url 'post:login' %}" class="btn btn-primary">{% trans "Resist" %}</a>
+                <a href="{% url 'post:login' %}" class="btn btn-primary btn-lg">{% trans "Resist" %}</a>
             {% endif %}
         </div>
     </div>
