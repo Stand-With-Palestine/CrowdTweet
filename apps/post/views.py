@@ -32,7 +32,7 @@ from .twitter_auth import get_client
 from .utils import (
     handle_uploaded_file,
 )
-from .models import TwitterUsers
+from .models import TwitterUsers, TweetStatistics
 
 
 class CustomLoginView(LoginView):
@@ -50,6 +50,12 @@ class CustomLogoutView(LogoutView):
 
 class WelcomePageView(TemplateView):
     template_name = 'index.html'
+
+    def get(self, request, *args, **kwargs):
+        resistants_count = TwitterUsers.objects.all().count()
+        tweets_count = TweetStatistics.objects.all().count()
+        context = {'tweets_count': tweets_count, 'resistants_count': resistants_count}
+        return self.render_to_response(context)
 
 
 class TwitterLogin(TemplateView):
@@ -85,6 +91,7 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                     access_token,
                     access_secret
                 )
+
                 try:
                     # Use API V1 to get media ID
                     settings.AUTH.set_access_token(
@@ -101,15 +108,20 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                             if str(uploaded_file).endswith('.gif') else 'tweet_image'
                         )
                         media_id = media.media_id
+
+                        statistics = TweetStatistics.objects.create(content=content, uploaded_file_url=uploaded_file, tweet_sent_to=user)
+                        statistics.save()
                         client.create_tweet(
                             text=content,
                             media_ids=[media_id]
                         )
+
                     else:
+                        statistics = TweetStatistics(content=content, tweet_sent_to=user)
+                        statistics.save()
                         client.create_tweet(
                             text=content,
                         )
-
                 except tweepy.errors.TweepyException as e:
                     logging.error(f"Twitter API Error for {user}: {e}")
 
@@ -148,13 +160,14 @@ def twitter_callback_sso(request):
             'access_token': access_secret[0],
             'access_secret': access_secret[1]
         }
-        if access_secret[0] == TwitterUsers.objects.values_list(
-                'tokens__access_token',
-                flat=True
-        ).get():
-            return redirect('post:welcome_page')
-        users = TwitterUsers(tokens=tokens_dict)
-        users.save()
-        return redirect('post:welcome_page')
+        if TwitterUsers.objects.all().exists():
+            if access_secret[0] == TwitterUsers.objects.values_list(
+                    'tokens__access_token',
+                    flat=True
+            ).get():
+                return redirect('post:welcome_page')
+            users = TwitterUsers(tokens=tokens_dict)
+            users.save()
     except tweepy.errors.TweepyException as e:
         return HttpResponse("Error: %s" % e)
+    return redirect('post:welcome_page')

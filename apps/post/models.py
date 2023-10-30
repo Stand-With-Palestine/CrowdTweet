@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import DO_NOTHING, SET_NULL
 
 
 class TwitterUsers(models.Model):
@@ -18,3 +19,12 @@ class TwitterUsers(models.Model):
 
     def __str__(self):
         return f"user {self.id}"
+
+
+class TweetStatistics(models.Model):
+    content = models.CharField(max_length=255, blank=True, null=True)
+    tweet_sent_to = models.ForeignKey(TwitterUsers, blank=True, null=True, on_delete=SET_NULL)
+    uploaded_file_url = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return f"Content {self.content}, Uploaded file URL {self.uploaded_file_url}"

@@ -2,6 +2,16 @@
 {% load i18n %}
 {% block welcome_page %}
     <div class="row">
+        <div class="col-12">
+            <h1 class="text-left">
+                🇵🇸 {% trans "Number of Resistants" %}: ({{ resistants_count }})
+            </h1>
+            <h1 class="text-left">
+                🔥 {% trans "number of tweets" %}: ({{ tweets_count }})
+            </h1>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <h1 class="text-center">
                 🇵🇸 {% trans "In support of Palestine" %}
