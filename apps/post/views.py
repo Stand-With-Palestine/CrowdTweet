@@ -109,7 +109,11 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                         )
                         media_id = media.media_id
 
-                        statistics = TweetStatistics.objects.create(content=content, uploaded_file_url=uploaded_file, tweet_sent_to=user)
+                        statistics = TweetStatistics.objects.create(
+                            content=content,
+                            uploaded_file_url=uploaded_file,
+                            tweet_sent_to=user
+                        )
                         statistics.save()
                         client.create_tweet(
                             text=content,
@@ -117,7 +121,10 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                         )
 
                     else:
-                        statistics = TweetStatistics(content=content, tweet_sent_to=user)
+                        statistics = TweetStatistics(
+                            content=content,
+                            tweet_sent_to=user
+                        )
                         statistics.save()
                         client.create_tweet(
                             text=content,
@@ -161,12 +168,12 @@ def twitter_callback_sso(request):
             'access_secret': access_secret[1]
         }
         if TwitterUsers.objects.all().exists():
-            if access_secret[0] == TwitterUsers.objects.values_list(
+            if access_secret[0] in TwitterUsers.objects.values_list(
                     'tokens__access_token',
                     flat=True
-            ).filter().first():
+            ).filter():
                 return redirect('post:welcome_page')
-            users = TwitterUsers(tokens=tokens_dict)
+            users = TwitterUsers.objects.create(tokens=tokens_dict)
             users.save()
     except tweepy.errors.TweepyException as e:
         return HttpResponse("Error: %s" % e)
