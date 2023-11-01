@@ -1,16 +1,26 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block welcome_page %}
-    <div class="row">
-        <div class="col-12">
-            <h1 class="text-left">
-                🇵🇸 {% trans "Number of Resistants" %}: ({{ resistants_count }})
-            </h1>
-            <h1 class="text-left">
-                🔥 {% trans "number of tweets" %}: ({{ tweets_count }})
-            </h1>
-        </div>
+
+
+    <div class="row" style="width: fit-content;">
+    <table class="table table-borderless">
+        <tbody>
+        <tr>
+            <td><h1>🇵🇸 {% trans "Number of Resistants" %}</h1></td>
+            <td><h1>:</h1></td>
+            <td><h1>{{ resistants_count }}</h1></td>
+        </tr>
+        <tr>
+            <td><h1>🔥 {% trans "Number of tweets" %}</h1></td>
+            <td><h1>:</h1></td>
+            <td><h1>{{ tweets_count }}</h1></td>
+        </tr>
+        </tbody>
+    </table>
     </div>
+
+    
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-center">
