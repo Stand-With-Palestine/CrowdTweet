@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
 import tweepy
 from dotenv import load_dotenv
 
@@ -27,16 +28,18 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'apps/templates')
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
-
+SECRET_KEY = os.getenv('SECRET_KEY', 'Al@A!!')
+ENVIRONMENT = os.getenv('ENVIRONMENT', '')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG', True)
 
-ALLOWED_HOSTS = ['3.249.31.235', 'localhost', 'standwithpalestine.info','www.standwithpalestine.info']
+ALLOWED_HOSTS = ['3.249.31.235', 'palmycause.info', 'localhost', 'standwithpalestine.info']
 CSRF_TRUSTED_ORIGINS = ['https://standwithpalestine.info']
-TWITTER_API_KEY = os.getenv('TWITTER_API_KEY')
-TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY')
-BEARER_TOKEN = os.getenv('BEARER_TOKEN')
+
+TWITTER_API_KEY = os.getenv('TWITTER_API_KEY', 'p8itN5RqnLoMa37ttJ5ap0HV6')
+TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY', 'IyyOLUz4y9wFwtUD8jcnnIjMeRG3CZo9IAppMp9NmFsIf2xGrv')
+BEARER_TOKEN = os.getenv('BEARER_TOKEN',
+                         "AAAAAAAAAAAAAAAAAAAAAL712AAAAAAAgWN3mJssDsSMVob43hNCoR87RgU%3DHrcabAXd6D3lSCkt98ZJ5vg6D3RfohPnSLfyLJ7XsGe8ka7JL9")
 
 AUTH = tweepy.OAuth1UserHandler(consumer_key=TWITTER_API_KEY, consumer_secret=TWITTER_API_SECRET_KEY)
 
@@ -105,15 +108,25 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv('DB_NAME', ''),
+#         'USER': os.getenv('DB_USER', ''),
+#         'PASSWORD': os.getenv('DB_PASS', ''),
+#         'HOST': os.getenv('DB_HOST', 'localhost'),
+#         'PORT': os.getenv('DB_PORT', '3306'),
+#     }
+# }
+# the following is for local use ONLY!
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASS'),
-        'HOST': os.getenv('DB_HOST','localhost'),
-        'PORT': os.getenv('DB_PORT','3306'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sql',
+        # 'USER': os.getenv('DB_USER'),
+        # 'PASSWORD': os.getenv('DB_PASS'),
+        # 'HOST': os.getenv('DB_HOST','localhost'),
+        # 'PORT': os.getenv('DB_PORT','3306'),
     }
 }
 
@@ -140,7 +153,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ar'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = os.getenv('TIME_ZONE', 'UTC')
 
 USE_I18N = True
 
@@ -170,4 +183,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', '/')
+LOGIN_URL = os.getenv('LOGIN_URL', '/accounts/login/')
