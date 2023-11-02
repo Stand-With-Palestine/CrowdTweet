@@ -100,7 +100,7 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                     )
                     api_v1 = tweepy.API(settings.AUTH)
                     if uploaded_file:
-                        media = api_v1.media_upload(
+                        media = api_v1.chunked_upload(
                             handle_uploaded_file(
                                 uploaded_file
                             ),
@@ -108,7 +108,6 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                             if str(uploaded_file).endswith('.gif') else 'tweet_image'
                         )
                         media_id = media.media_id
-
                         statistics = TweetStatistics.objects.create(
                             content=content,
                             uploaded_file_url=uploaded_file,
@@ -119,7 +118,6 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                             text=content,
                             media_ids=[media_id]
                         )
-
                     else:
                         statistics = TweetStatistics(
                             content=content,
@@ -173,8 +171,8 @@ def twitter_callback_sso(request):
                     flat=True
             ).filter():
                 return redirect('post:welcome_page')
-            users = TwitterUsers.objects.create(tokens=tokens_dict)
-            users.save()
+        users = TwitterUsers.objects.create(tokens=tokens_dict)
+        users.save()
     except tweepy.errors.TweepyException as e:
         return HttpResponse("Error: %s" % e)
     return redirect('post:welcome_page')
