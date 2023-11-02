@@ -7,7 +7,7 @@ def handle_uploaded_file(uploaded_file):
     # Define the directory where you want to save the file, relative to your media root.
     upload_directory = 'uploads/'  # This is a subdirectory within the media root.
 
-    file = os.path.splitext(os.path.basename(uploaded_file))[0]
+    file = os.path.splitext(os.path.basename(str(uploaded_file)))[0]
 
     # Create the full path for the uploaded file.
     file_path = os.path.join(settings.MEDIA_ROOT, upload_directory, file)
