@@ -26,7 +26,7 @@ elif os.getenv('ENVIRONMENT') == 'test':
     # The number of worker processes for handling requests
     workers = 3
     # The socket to bind
-    bind = "0.0.0.0:8000"
+    bind = "0.0.0.0:4000"
     # Write access and error info to /tmp
     accesslog = error_log = "/tmp/gunicorn.log"
     # Redirect stdout/stderr to log file
@@ -43,7 +43,7 @@ else:
     # The number of worker processes for handling requests
     workers = 3
     # The socket to bind
-    bind = "0.0.0.0:80"
+    bind = "0.0.0.0:4000"
     # Write access and error info to /tmp
     accesslog = error_log = "/tmp/gunicorn.log"
     # Redirect stdout/stderr to log file
