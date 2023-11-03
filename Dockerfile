@@ -1,6 +1,9 @@
 FROM python:3.10@sha256:3c7ae95d95adf492c43da3d998ab8b46894374a7697c2b14f91d252f9a303172
 
+ENV DEBIAN_FRONTEND=noninteractive 
 ENV DJANGO_SETTINGS_MODULE=main.settings
+
+RUN apt update && apt install -y libmariadb-dev
 
 # Create and switch to /app directory
 WORKDIR /app
