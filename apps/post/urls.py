@@ -8,7 +8,8 @@ from .views import (
     TwitterLogin,
     twitter_login_sso,
     twitter_callback_sso,
-    AboutUsView
+    AboutUsView,
+    health_check
 )
 
 app_name = 'apps.post'
@@ -22,4 +23,5 @@ urlpatterns = [
     path('accounts/login/', CustomLoginView.as_view(), name='super_user_login'),
     path('accounts/logout/', CustomLogoutView.as_view(), name='super_user_logout'),
     path('about-us/', AboutUsView.as_view(), name='about_us'),
+    path('healthz/', health_check, name='health_check'),
 ]

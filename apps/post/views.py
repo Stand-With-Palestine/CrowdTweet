@@ -32,7 +32,10 @@ from .twitter_auth import get_client
 from .utils import (
     handle_uploaded_file,
 )
-from .models import TwitterUsers, TweetStatistics
+from .models import (
+    TwitterUsers,
+    TweetStatistics
+)
 
 
 class CustomLoginView(LoginView):
@@ -176,3 +179,9 @@ def twitter_callback_sso(request):
     except tweepy.errors.TweepyException as e:
         return HttpResponse("Error: %s" % e)
     return redirect('post:welcome_page')
+
+
+def health_check(request):
+    if request.path == '/healthz/':
+        return HttpResponse(200)
+    return HttpResponse(404)
