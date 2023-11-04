@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from re import DEBUG
 
 import tweepy
 from dotenv import load_dotenv
@@ -31,7 +32,8 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'apps/templates')
 SECRET_KEY = os.getenv('SECRET_KEY', 'Al@A!!')
 ENVIRONMENT = os.getenv('ENVIRONMENT', '')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', True)
+if os.getenv('ENVIRONMENT') != "prod":
+    DEBUG=True
 
 ALLOWED_HOSTS = ['3.249.31.235', 'palmycause.info', 'localhost', 'standwithpalestine.info','ECS-LB-1114824834.eu-west-1.elb.amazonaws.com']
 CSRF_TRUSTED_ORIGINS = ['https://standwithpalestine.info']
