@@ -103,6 +103,9 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                     )
                     api_v1 = tweepy.API(settings.AUTH)
                     if uploaded_file:
+                        # @TODO: the following is for handling Async processing videos uploads
+                        # from .tasks import handle_file_upload_process
+                        # handle_file_upload_process.delay()
                         media = api_v1.chunked_upload(
                             handle_uploaded_file(
                                 uploaded_file
