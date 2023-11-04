@@ -4,12 +4,10 @@ import os
 if os.getenv('ENVIRONMENT') == 'prod':
     # Django WSGI application path in pattern MODULE_NAME:VARIABLE_NAME
     wsgi_app = "main.wsgi:application"
-    # The granularity of Error log outputs
-    loglevel = "debug"
     # The number of worker processes for handling requests
     workers = 3
     # The socket to bind
-    bind = "0.0.0.0:443"
+    bind = "0.0.0.0:4000"
     # Write access and error info to /tmp
     accesslog = error_log = "/tmp/gunicorn.log"
     # Redirect stdout/stderr to log file
@@ -21,7 +19,7 @@ if os.getenv('ENVIRONMENT') == 'prod':
 elif os.getenv('ENVIRONMENT') == 'test':
     # Django WSGI application path in pattern MODULE_NAME:VARIABLE_NAME
     wsgi_app = "main.wsgi:application"
-    # The granularity of Error log outputs
+    # The granularity of Error log output
     loglevel = "debug"
     # The number of worker processes for handling requests
     workers = 3
