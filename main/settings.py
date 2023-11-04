@@ -33,7 +33,7 @@ ENVIRONMENT = os.getenv('ENVIRONMENT', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', True)
 
-ALLOWED_HOSTS = ['3.249.31.235', 'palmycause.info', 'localhost', 'standwithpalestine.info']
+ALLOWED_HOSTS = ['3.249.31.235', 'palmycause.info', 'localhost', 'standwithpalestine.info','ECS-LB-1114824834.eu-west-1.elb.amazonaws.com']
 CSRF_TRUSTED_ORIGINS = ['https://standwithpalestine.info']
 
 TWITTER_API_KEY = os.getenv('TWITTER_API_KEY', 'p8itN5RqnLoMa37ttJ5ap0HV6')
