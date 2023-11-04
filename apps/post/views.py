@@ -182,6 +182,6 @@ def twitter_callback_sso(request):
 
 
 def health_check(request):
-    if request.path == '/healthz/':
+    if request.path == '/healthz':
         return HttpResponse(200)
     return HttpResponse(404)
