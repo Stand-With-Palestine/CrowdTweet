@@ -1,7 +1,10 @@
 """Gunicorn *development* config file"""
 from os import getenv
 from dotenv import load_dotenv
-load_dotenv()
+try:
+    load_dotenv()
+except Exception:
+    pass
 
 if getenv('ENVIRONMENT') == 'prod':
     # Django WSGI application path in pattern MODULE_NAME:VARIABLE_NAME
@@ -9,7 +12,7 @@ if getenv('ENVIRONMENT') == 'prod':
     # The number of worker processes for handling requests
     workers = 3
     # The socket to bind
-    bind = "0.0.0.0:=8000"
+    bind = "0.0.0.0:8000"
     # Write access and error info to /tmp
     accesslog = error_log = "/tmp/gunicorn.log"
     # Redirect stdout/stderr to log file
