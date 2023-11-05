@@ -42,7 +42,7 @@
                 </table>
             </div>
             {% if not request.user.is_authenticated %}
-                <a href="./login.html" class="btn btn-primary mx-3 align-self-start px-4">
+                <a href="{% url 'post:twitter_login' %}" class="btn btn-primary mx-3 align-self-start px-4">
                     {% trans "Resist" %}
                     <img src="{% static '/images/twitter.svg' %}" width="15px" alt="" srcset="">
                 </a>
