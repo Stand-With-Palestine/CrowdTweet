@@ -1,23 +1,22 @@
-.row:nth-child(2) {
-    align-items: center;
+.main-text-container {
+    flex: 0 0 27%;
 }
 
-/* Style the Arabic text in the content */
-h1.text-right {
-    text-align: right;
-    font-size: 1.5rem;
-    line-height: 1.5;
+.main-image-container {
+    flex: 0 1 73%;
 }
 
-/* Style the "قــــاوم" button in the content */
-.btn-primary.float-right {
-    background-color: #007bff; /* Change button color */
-    border-color: #007bff;
-    padding: 10px 20px; /* Add padding to the button */
-    font-size: 1rem;
+.main-image-container img {
+    height: 100vh;
 }
 
-/* Center the "قــــاوم" button horizontally in its column */
-.col-md-6 .btn-primary.float-right {
-    margin: 0 auto;
+h1.main-text-header {
+    line-height: 66px;
+    /* 165% */
+}
+
+
+section {
+    height: 100vh;
+    padding-top: 60px;
 }
