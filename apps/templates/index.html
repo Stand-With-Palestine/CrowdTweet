@@ -1,66 +1,55 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 {% block welcome_page %}
-
-
-    <div class="row" style="width: fit-content;">
-    <table class="table table-borderless">
-        <tbody>
-        <tr>
-            <td><h1>🇵🇸 {% trans "Number of Resistants" %}</h1></td>
-            <td><h1>:</h1></td>
-            <td><h1>{{ resistants_count }}</h1></td>
-        </tr>
-        <tr>
-            <td><h1>🔥 {% trans "Number of tweets" %}</h1></td>
-            <td><h1>:</h1></td>
-            <td><h1>{{ tweets_count }}</h1></td>
-        </tr>
-        </tbody>
-    </table>
-    </div>
-
-    
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center">
-                🇵🇸 {% trans "In support of Palestine" %}
+    <section class="d-flex flex-column-reverse flex-md-row">
+        <div class="d-flex flex-column main-text-container py-5">
+            <h1 class="text-primary main-text-header ps-5 pe-4 ">
+                {% trans "In support of Palestine Resist as much as you can" %}
             </h1>
-            <h1 class="text-center">
-                🔥 {% trans "Resist as much as you can" %}
-            </h1>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <h3 class="text-center py-3">
-                💪🏼 {% trans "Here, we aim to ignite the spark of change and uncover hidden truths" %}
-            </h3>
-            <h3 class="text-center">
-                {% trans "It's a Twitter awareness campaign that springs from the depths of our hearts to change the narrative and expose deception" %}
-            </h3>
-            <h3 class="text-end py-4">
-                {% trans "If you're ready to participate in this effort, you have the opportunity now. Join us by clicking the button below" %}
-                <span class="text-primary">{% trans "Resist" %}</span>،
-                {% trans "and we will share the facts in your voices in foreign languages to make the world hear us. Here, you don't just have a chance to participate but a chance to change the narrative and influence the world with your story. Get started and be a part of this creative campaign" %}
-            </h3>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <h3 class="text-center">
-                💪🏼 {% trans "This project has been prepared by young Arabs who are passionate about their cause" %}
-            </h3>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-md-12 text-center">
+            <p class="px-3 mt-5 h6">
+                {% trans "Resist it's an awareness campaign on" %}
+                <u><b>{% trans "Twitter" %}</b></u>
+                {% trans "that springs from the depths of our hearts to change the narrative and expose deception" %}
+            </p>
+
+            <p class="px-3 mt-3 h6">
+                {% trans "If you're ready to participate in this effort" %}
+                <u><b>{% trans "you have the opportunity now" %}</b></u>
+            </p>
+
+            <p class="px-3 mt-3 h6">
+                {% trans "Join us by clicking the button below Resist" %}
+                <b>{% trans "and we will share the facts in your voices in foreign languages to make the world hear us" %}</b>
+            </p>
+
+            <p class="px-3 mt-3 h6">
+                {% trans "Get started and be a part of this creative campaign" %}
+            </p>
+
+            <div class="px-3 mt-3 h6">
+                <table class="d-flex text-primary">
+                    <tbody>
+                    <tr>
+                        <td class="ps-4"><p>{% trans "Number of Resistants" %} :</p></td>
+                        <td><p>{{ resistants_count }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>{% trans "Number of tweets" %} :</p></td>
+                        <td><p>{{ tweets_count }}</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
             {% if not request.user.is_authenticated %}
-                <h1 class="text-center">
-                    {% trans "The link to allow the platform to share on your accounts so you can be part of the resistance with your words" %}
-                </h1>
-                <a href="{% url 'post:login' %}" class="btn btn-primary btn-lg">{% trans "Resist" %}</a>
+                <a href="./login.html" class="btn btn-primary mx-3 align-self-start px-4">
+                    {% trans "Resist" %}
+                    <img src="{% static '/images/twitter.svg' %}" width="15px" alt="" srcset="">
+                </a>
             {% endif %}
         </div>
-    </div>
+        <div class="main-image-container">
+            <img class="w-100" src="{% static '/images/main-page.png' %}" alt="Image"/>
+        </div>
+    </section>
 {% endblock %}

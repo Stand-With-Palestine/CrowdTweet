@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-30 13:07+0000\n"
+"POT-Creation-Date: 2023-11-05 18:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,28 +27,25 @@ msgstr "المـحتوى"
 msgid "Media File"
 msgstr "اضافة ملف وسائط"
 
-#: templates/about_us.html:11 templates/header.html:14 templates/header.html:37
-msgid "About Us"
+#: templates/about_us.html:13
+msgid "Who we are"
 msgstr "من نحن"
 
-#: templates/about_us.html:18
-msgid "Our project is a support for the original Campaign"
-msgstr " مشروعنا عبارة عن دعم للحـملة الأصلية"
+#: templates/about_us.html:17
+msgid "Our project is a support for the original Campaign On Twitter"
+msgstr "مشروعنا عبارة عن دعم للحـملة الأصلية القائمة على منصة تويتر"
 
-#: templates/about_us.html:24
-msgid "What's the Campaign"
+#: templates/about_us.html:19
+msgid "What is the campaign"
 msgstr "مـا هي الحـملة"
 
-#: templates/about_us.html:27
+#: templates/about_us.html:23
 msgid ""
 "An awareness campaign aimed at stopping the aggression on Gaza and lifting "
 "the blockade through exposing Zionist media manipulation by posting tweets "
 "in English on Twitter and revealing the facts to the Western and Arab world "
 "about what is happening in Gaza"
-msgstr ""
-"حملة إعلامية تهدف إلى إيقاف العدوان على غزة، وفك الحصار، من خلال تبين "
-"التزييف الإعلامي الصهيوني وذلك بنشر تغريدات باللغة الإنجليزية على تويتر، "
-"وكشف الحقائق للعالم الغربي والعربي على ما يجري في غزة"
+msgstr "حملة إعلامية تهدف إلى إيقاف العدوان على غزة، وفك الحصار، من خلال تبين التزييف الإعلامي الصهيوني وذلك بنشر تغريدات باللغة الإنجليزية على تويتر، وكشف الحقائق للعالم الغربي والعربي على ما يجري في غزة"
 
 #: templates/account/login.html:5 templates/account/login.html:11
 #: templates/account/login.html:25
@@ -59,88 +56,77 @@ msgstr "تـسجيل الدخول"
 msgid "Forgot Password?"
 msgstr "نـسيت كلمة المرور"
 
-#: templates/footer.html:4
-msgid "Stand With Gaza campaign"
-msgstr "حملة نُـصرة غزه"
-
-#: templates/header.html:9 templates/header.html:32
-msgid "Home"
-msgstr "الصفحه الرئيسية"
-
-#: templates/header.html:11 templates/header.html:34
-msgid "Post Tweet"
-msgstr "انـشر الآن"
-
-#: templates/header.html:16 templates/header.html:39
-msgid "Logout"
-msgstr "تسـجيل الخروج"
-
-#: templates/header.html:19 templates/header.html:42
-msgid "remove the account"
-msgstr ""
-
-#: templates/header.html:21 templates/header.html:44
-msgid "Login"
-msgstr "تسـجيل الدخول"
-
-#: templates/header.html:28
-msgid "Menu"
-msgstr "القـائمة"
-
-#: templates/index.html:7
-msgid "In support of Palestine"
-msgstr "من أجل فلسطين"
-
-#: templates/index.html:10
-msgid "Resist as much as you can"
-msgstr "قاوم بما تستطيع"
-
-#: templates/index.html:17
-msgid "Here, we aim to ignite the spark of change and uncover hidden truths"
-msgstr "نسعى هنا إلى إشعال شرارة التغيير وكشف الحقائق الخفية"
-
-#: templates/index.html:20
-msgid ""
-"It's a Twitter awareness campaign that springs from the depths of our hearts "
-"to change the narrative and expose deception"
-msgstr ""
-" إنها حملة إعلامية على تويتر تنطلق من أعماق القلوب لتغيير الرواية وكشف "
-"التضليل"
-
-#: templates/index.html:23
-msgid ""
-"If you're ready to participate in this effort, you have the opportunity now. "
-"Join us by clicking the button below"
-msgstr ""
-"إذا كنتم مستعدين للمشاركة في هذا الجهد، فلديكم الفرصة الآن. انضموا إلينا "
-"بالنقر على الزر أدناه"
-
-#: templates/index.html:24 templates/index.html:42
+#: templates/base.html:12 templates/index.html:46
 msgid "Resist"
 msgstr "قــاوم"
 
-#: templates/index.html:25
+#: templates/header.html:19
+msgid "Home"
+msgstr "الصفحه الرئيسية"
+
+#: templates/header.html:22
+msgid "About Us"
+msgstr "من نحن"
+
+#: templates/header.html:28
+msgid "Login"
+msgstr "تسـجيل الدخول"
+
+#: templates/header.html:31
+msgid "Logout"
+msgstr "تسـجيل الخروج"
+
+#: templates/header.html:35
+msgid "Post Tweet"
+msgstr "انـشر الآن"
+
+#: templates/index.html:8
+msgid "In support of Palestine Resist as much as you can"
+msgstr "من أجل فلسطين قاوم بما تستطيع"
+
+#: templates/index.html:11
+msgid "Resist it's an awareness campaign on"
+msgstr "قاوم حملة إعلامية على "
+
+#: templates/index.html:12
+msgid "Twitter"
+msgstr " تويتر"
+
+#: templates/index.html:13
+msgid ""
+"that springs from the depths of our hearts to change the narrative and "
+"expose deception"
+msgstr "تنطلق من أعماق القلوب لتغيير الرواية وكشف التضليل"
+
+#: templates/index.html:17
+msgid "If you're ready to participate in this effort"
+msgstr "إذا كنتم مستعدين للمشاركة في هذا الجهد"
+
+#: templates/index.html:18
+msgid "you have the opportunity now"
+msgstr "فلديكم الفرصة الآن"
+
+#: templates/index.html:22
+msgid "Join us by clicking the button below Resist"
+msgstr "انضموا إلينا بالنقر على الزر أدناه قــاوم"
+
+#: templates/index.html:23
 msgid ""
 "and we will share the facts in your voices in foreign languages to make the "
-"world hear us. Here, you don't just have a chance to participate but a "
-"chance to change the narrative and influence the world with your story. Get "
-"started and be a part of this creative campaign"
-msgstr ""
-"وسنقوم بنشر الحقائق بأصواتكم بلغات أجنبية، لنجعل العالم يسمعنا. هنا، ليس "
-"لديكم مجرد فرصة للمشاركة بل فرصة لتغيير السرد والتأثير على العالم بقصتكم. "
-"انطلقوا وكونوا جزءًا من هذه الحملة الإبداعية"
+"world hear us"
+msgstr "وسنقوم بنشر الحقائق بأصواتكم بلغات أجنبية، لنجعل العالم يسمعنا"
 
-#: templates/index.html:32
-msgid ""
-"This project has been prepared by young Arabs who are passionate about their "
-"cause"
-msgstr "تم تجهيز هذا المشروع من قبل شباب عربي غيور على قضيته"
+#: templates/index.html:27
+msgid "Get started and be a part of this creative campaign"
+msgstr "انطلقوا وكونوا جزءًا من هذه الحملة الإبداعية"
 
-#: templates/index.html:40
-msgid ""
-"The link to allow the platform to share on your accounts so you can be part "
-"of the resistance with your words"
-msgstr "رابط السماح للمنصة بالمشاركة على حساباتكم لتكونو جزءً من المقاومة بالكلمة"
+#: templates/index.html:34
+msgid "Number of Resistants"
+msgstr "عدد المقاومين"
+
+#: templates/index.html:38
+msgid "Number of tweets"
+msgstr "عدد التغريدات"
 
 #: templates/login.html:8
 msgid "sign in with twitter"

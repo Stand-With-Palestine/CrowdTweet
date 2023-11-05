@@ -1,0 +1,17 @@
+.main-image-container {
+    flex: 0 1 100%;
+}
+
+.main-text-container {
+   background:  linear-gradient(180deg, rgba(255, 255, 255, 0.2) 36.04%, rgba(255, 255, 255, 4) 163%), linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+    /* background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 36.04%, rgba(255, 255, 255, 0.00) 167.81%), linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%); */
+    /* 165% */
+}
+
+.text-content {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 167) 0, rgba(255, 255, 255, 0.00) 150.81%), linear-gradient(-180deg, #FFF 0, rgba(255, 255, 255, 0.6) 100%);
+}
+
+section {
+    max-height: 100vh;
+}

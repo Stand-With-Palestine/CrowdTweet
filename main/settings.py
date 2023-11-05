@@ -122,10 +122,10 @@ if os.getenv('ENVIRONMENT'):
     }
 else:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-    }
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+        }
     }
 
 
@@ -165,11 +165,11 @@ LOCALE_PATHS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'apps/static')
+STATIC_URL = '/apps/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'apps/static'),
+    os.path.join(BASE_DIR, 'apps/../static'),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
