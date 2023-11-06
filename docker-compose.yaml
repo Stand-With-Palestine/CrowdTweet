@@ -4,6 +4,8 @@ services:
     build: .
     container_name: crowdtweet
     image: crowdtweet:latest
+    volumes:
+      - ./:/app
     environment:
       TWITTER_API_KEY: ""
       TWITTER_API_SECRET_KEY: ""

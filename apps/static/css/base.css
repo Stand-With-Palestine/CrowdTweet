@@ -1,17 +1,36 @@
-a {
-  color: #333;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
+:root {
+    --brand-green-primary: #007A3D
 }
 
-a:hover {
-  color: #fff;
-  background-color: #337ab7;
+body {
+    font-family: 'Almarai';
+    font-size: 16px;
 }
 
-a:active {
-  color: #fff;
-  background-color: #286090;
+.active {
+    border-bottom: 2px solid #000;
+}
+
+
+.btn-primary {
+    border-radius: 8px;
+    border: 1px solid var(--brand-green-primary);
+    background: var(--brand-green-primary) !important;
+}
+
+.btn-outline-primary {
+    border-radius: 8px;
+    border: 1px solid var(--brand-green-primary) !important;
+    color: var(--brand-green-primary);
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: var(--brand-green-primary);
+    border-color: #fff;
+}
+
+.text-primary {
+    color: var(--brand-green-primary) !important;
+
 }

@@ -1,46 +1,38 @@
+{% load i18n %}
 {% load static %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>Stand With Palestine</title>
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <link href="{% static 'css/header.css' %}" rel="stylesheet">
-    <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% trans "Resist" %}</title>
+    <link href='https://fonts.googleapis.com/css?family=Almarai' rel='stylesheet'>
+    <link href="{% static '/css/base.css' %}" rel="stylesheet">
+    <link href="{% static '/css/index.css' %}" rel="stylesheet">
+    <link href="{% static '/css/header.css' %}" rel="stylesheet">
+    <link href="{% static '/css/about_us.css' %}" rel="stylesheet">
 </head>
-<body class="min-vh-100">
-<div class="container mt-4">
-    {% include 'header.html' %}
-    <div class="mt-5">
-        {% block content %}
-            {% block welcome_page %}
+<body dir="rtl">
+{% include 'header.html' %}
+{% block content %}
+    {% block welcome_page %}
 
-            {% endblock %}
-            </div>
-            <div class="row d-flex justify-content-center align-items-center">
-                {% block login_page %}
+    {% endblock %}
+    {% block login_page %}
 
-                {% endblock %}
-            </div>
-            {% if user.is_authenticated %}
-                <div class="row d-flex justify-content-center align-items-center">
-                    {% block post_to_twitter %}
+    {% endblock %}
+    {% if user.is_authenticated %}
+        {% block post_to_twitter %}
 
-                    {% endblock %}
-                </div>
-            {% endif %}
-            {% block about_us %}
-
-            {% endblock %}
-
-            <div class="row align-items-center">
-                {% include 'footer.html' %}
-            </div>
         {% endblock %}
-</div>
+    {% endif %}
+    {% block about_us %}
+
+    {% endblock %}
+{% endblock %}
 </body>
 </html>

@@ -1,43 +1,41 @@
 {% load i18n %}
+{% load static %}
 
-<div class="row">
-    <div class="col-md-7">
-        <h1 id="logo" class="text-left">#StandWithPalestine</h1>
-    </div>
-    <div class="col-md-5 d-md-none d-lg-block">
-        <nav class="nav justify-content-end">
-            <a class="nav-link" href="{% url 'post:welcome_page' %}">{% trans "Home" %}</a>
-            {% if request.user.is_authenticated and request.user.is_superuser %}
-                <a class="nav-link" href="{% url 'post:post_to_twitter' %}">{% trans "Post Tweet" %}</a>
-            {% endif %}
-
-            <a class="nav-link" href="{% url 'post:about_us' %}">{% trans "About Us" %} </a>
-            {% if request.user.is_authenticated %}
-                <a class="nav-link" href="{% url 'post:super_user_logout' %}">{% trans "Logout" %}</a>
-            {% else %}
-                <a class="nav-link" href="{% url 'post:super_user_login' %}">{% trans "Login" %}</a>
-            {% endif %}
-        </nav>
-    </div>
-
-    <div class="col-5 d-lg-none">
-        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            {% trans "Menu" %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse" id="navbarCollapse">
-            <nav class="nav nav-pills flex-column">
-                <a class="nav-link" href="{% url 'post:welcome_page' %}">{% trans "Home" %}</a>
-                {% if request.user.is_authenticated and request.user.is_superuser %}
-                    <a class="nav-link" href="{% url 'post:post_to_twitter' %}">{% trans "Post Tweet" %}</a>
-                {% endif %}
+        <img class="navbar-brand" width="48px" src="{% static '/images/logo.svg' %}" alt="Your Logo"/>
+        <img class="navbar-brand mx-2" width="48px" src="{% static '/images/logo-text.svg' %}" alt="Your Logo"/>
 
-                <a class="nav-link" href="{% url 'post:about_us' %}">{% trans "About Us" %} </a>
-                {% if request.user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'post:super_user_logout' %}">{% trans "Logout" %}</a>
-                {% else %}
-                    <a class="nav-link" href="{% url 'post:super_user_login' %}">{% trans "Login" %}</a>
-                {% endif %}
-            </nav>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div class="d-flex w-100 justify-content-between flex-column flex-md-row">
+                <div class="d-flex"></div>
+                <ul class="navbar-nav mb-2 mb-lg-0 px-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page"
+                           href="{% url 'post:welcome_page' %}">{% trans "Home" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-md-5 active" href="{% url 'post:about_us' %}">{% trans "About Us" %}</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    {% if not request.user.is_authenticated %}
+                    <a href="{% url 'post:super_user_login' %}"
+                       class="btn btn-primary mx-3 d-flex align-items-center">{% trans "Login" %}</a>
+                    {% else %}
+                        <a href="{% url 'post:super_user_logout' %}"
+                           class="btn btn-outline-primary ms-3  d-flex align-items-center">{% trans "Logout" %}</a>
+                    {% endif %}
+                    {% if request.user.is_authenticated and request.user.is_superuser %}
+                        <a href="{% url 'post:post_to_twitter' %}"
+                           class="btn btn-primary ms-5  d-flex align-items-center">{% trans "Post Tweet" %}</a>
+                    {% endif %}
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</nav>
