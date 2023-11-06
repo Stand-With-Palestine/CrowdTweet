@@ -123,10 +123,10 @@ if os.getenv('ENVIRONMENT'):
     }
 else:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sql',
-    }
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sql',
+        }
 }
 
 
