@@ -94,7 +94,6 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                     access_token,
                     access_secret
                 )
-
                 try:
                     # Use API V1 to get media ID
                     settings.AUTH.set_access_token(
@@ -103,27 +102,15 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                     )
                     api_v1 = tweepy.API(settings.AUTH)
                     if uploaded_file:
-                        # @TODO: the following is for handling Async processing videos uploads
-                        # from .tasks import handle_file_upload_process
-                        # handle_file_upload_process.delay()
-                        media = api_v1.chunked_upload(
-                            handle_uploaded_file(
-                                uploaded_file
-                            ),
-                            media_category='tweet_video' if str(uploaded_file).endswith('.mp4') else 'tweet_gif'
-                            if str(uploaded_file).endswith('.gif') else 'tweet_image'
-                        )
-                        media_id = media.media_id
+                        # the following is for handling Async processing videos uploads
+                        from .tasks import handle_file_upload_process
+                        handle_file_upload_process.delay(api_v1, client, content, uploaded_file)
                         statistics = TweetStatistics.objects.create(
                             content=content,
                             uploaded_file_url=uploaded_file,
                             tweet_sent_to=user
                         )
                         statistics.save()
-                        client.create_tweet(
-                            text=content,
-                            media_ids=[media_id]
-                        )
                     else:
                         statistics = TweetStatistics(
                             content=content,
@@ -140,6 +127,7 @@ class PostToTwitter(LoginRequiredMixin, UserPassesTestMixin, FormView):
                     logging.error(f"Error posting the tweet for {user}: {e}")
 
         return HttpResponseRedirect(reverse('post:post_to_twitter'))
+
 
 
 def twitter_login_sso(request):
