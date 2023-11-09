@@ -11,10 +11,6 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 app.conf.beat_schedule = {
-    'add-every-30-seconds': {
-        'task': 'main.celery.debug_task',
-        'schedule': timedelta(seconds=30),
-    },
 }
 app.conf.update(
     CELERY_ACCEPT_CONTENT=['json'],
