@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 import tweepy
 from dotenv import load_dotenv
@@ -124,9 +125,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
+            'NAME': 'db.sql',
         }
-    }
+}
 
 
 # Password validation
@@ -184,3 +185,9 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', '/')
 LOGIN_URL = os.getenv('LOGIN_URL', '/accounts/login/')
+
+# celery settings
+BROKER_URL = 'amqp://guest:@localhost/'
+BROKER_BACKEND = 'amqp://guest:@localhost/'
+if "celeryd" in sys.argv:
+    DEBUG = False
