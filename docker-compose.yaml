@@ -27,7 +27,7 @@ services:
       - 5672:5672
 
   celery:
-    image: celery:5.3.4
+    image: celery
     container_name: celery
     expose:
       - 27017
