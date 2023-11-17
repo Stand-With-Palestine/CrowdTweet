@@ -25,7 +25,7 @@ jobs:
         echo "$PRIVATE_KEY" > /tmp/deploy_key
         cat /tmp/deploy_key
         echo $YOUR_EC2_PUBLIC_IP
-        ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no ubuntu@3.249.31.235 'cd /home/ubuntu/CrowdTweet && git pull'
+        ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no ubuntu@34.245.60.84 'cd /home/ubuntu/CrowdTweet && git pull'
 
     - name: Clean up
       run: rm /tmp/deploy_key
