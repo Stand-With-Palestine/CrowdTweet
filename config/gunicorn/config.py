@@ -14,7 +14,7 @@ if getenv('ENVIRONMENT') == 'prod':
     # The socket to bind
     bind = "0.0.0.0:8000"
     # Write access and error info to /tmp
-    accesslog = error_log = "/tmp/gunicorn.log"
+    accesslog = errorlog  = "/tmp/gunicorn.log"
     # Redirect stdout/stderr to log file
     capture_output = True
     # Set timeout for gunicorn
@@ -35,7 +35,7 @@ elif getenv('ENVIRONMENT') == 'test':
     # The socket to bind
     bind = "0.0.0.0:4000"
     # Write access and error info to /tmp
-    accesslog = error_log = "/tmp/gunicorn.log"
+    accesslog = errorlog  = "/tmp/gunicorn.log"
     # Redirect stdout/stderr to log file
     capture_output = True
     # Set timeout for gunicorn
@@ -56,7 +56,7 @@ else:
     # The socket to bind
     bind = "0.0.0.0:4000"
     # Write access and error info to /tmp
-    accesslog = error_log = "/tmp/gunicorn.log"
+    accesslog = errorlog  = "/tmp/gunicorn.log"
     # Redirect stdout/stderr to log file
     capture_output = True
     # Set timeout for gunicorn

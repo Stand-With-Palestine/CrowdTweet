@@ -34,3 +34,5 @@ django-bootstrap-v5==1.0.11
 gunicorn==20.1.0
 celery==5.3.4
 django_celery_beat==2.5.0
+mysqlclient
+mysql-connector-python
