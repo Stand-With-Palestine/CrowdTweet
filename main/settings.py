@@ -189,7 +189,7 @@ LOGIN_URL = os.getenv('LOGIN_URL', '/accounts/login/')
 
 # celery settings
 
-BROKER_URL = os.getenv('BROKER_URL', 'amqp://guest:guest@rabbitmq:5672//:')
-BROKER_BACKEND = os.getenv('BROKER_BACKEND', 'amqp://guest:guest@rabbitmq:5672//:')
+BROKER_URL = os.getenv('BROKER_URL', 'amqp://guest:guest@rabbitmq:5672')
+BROKER_BACKEND = os.getenv('BROKER_BACKEND', 'amqp://guest:guest@rabbitmq:5672')
 if "celeryd" in sys.argv:
     DEBUG = False
