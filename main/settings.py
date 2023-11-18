@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'Al@A!!')
 ENVIRONMENT = os.getenv('ENVIRONMENT', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.getenv('ENVIRONMENT') != "prod":
-    DEBUG=True
+    DEBUG = True
 
 ALLOWED_HOSTS = ['3.249.31.235', 'palmycause.info', 'localhost', 'standwithpalestine.info',
                  'ECS-LB-1114824834.eu-west-1.elb.amazonaws.com', '34.245.60.84']
@@ -188,7 +188,8 @@ LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', '/')
 LOGIN_URL = os.getenv('LOGIN_URL', '/accounts/login/')
 
 # celery settings
-BROKER_URL = 'amqp://guest:@localhost/'
-BROKER_BACKEND = 'amqp://guest:@localhost/'
+
+BROKER_URL = os.getenv('BROKER_URL', 'amqp://guest:guest@rabbitmq:5672')
+BROKER_BACKEND = os.getenv('BROKER_BACKEND', 'amqp://guest:guest@rabbitmq:5672')
 if "celeryd" in sys.argv:
     DEBUG = False
