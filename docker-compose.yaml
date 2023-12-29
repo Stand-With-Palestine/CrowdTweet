@@ -21,16 +21,13 @@ services:
   rabbitmq:
     image: rabbitmq:3.11.25
     container_name: rabbitmq
-    expose:
-      - 5672
     ports:
-      - 5672:5672
+      - "5672:5672"
 
   celery:
     image: celery
     container_name: celery
-    expose:
-      - 27017
-    ports:
-      - 27017:27017
-
+    environment:
+      CELERY_BROKER_URL: 'amqp://guest:guest@rabbitmq:5672'
+    depends_on:
+      - rabbitmq
